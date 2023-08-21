@@ -3,6 +3,10 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\FavoriteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,4 +24,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('register', RegisterController::class)->name('register');
-// Route::post('login', LoginController::class)->name('login')->middleware('coupon');
+Route::post('login', LoginController::class)->name('login');
+Route::post('logout', LogoutController::class)->name('logout');
+Route::apiResource('posts', PostController::class);
+
+Route::get('favorites', [FavoriteController::class, 'index'])->name('favorites.index');
+Route::post('posts/{post}/favorite', [FavoriteController::class, 'store'])->name('favorites.store');
+Route::delete('posts/{post}/favorite', [FavoriteController::class, 'destroy'])->name('favorites.destroy');
