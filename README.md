@@ -10,14 +10,9 @@ This is the repository of the REST API of _Chipper_, a fictional microblogging a
 ### Authentication
 - A user can login with email and password
 - A users can not authenticate with an invalid password
+- A user can get his session
+- A guest can not get his session
 - A user can logout
-
-### Post
-- A guest can not create a post
-- A user can create a post
-- A user can update a post
-- A user can update a post by other user
-- A user can destroy one of his posts
 
 ### Favorite
 - A guest can not favorite a post
@@ -25,17 +20,26 @@ This is the repository of the REST API of _Chipper_, a fictional microblogging a
 - A user can remove a post from his favorites
 - A user can not remove a non favorited item
 
+### Post
+- A guest can not create a post
+- A user can create a post
+- A user can update a post
+- A user can not update a post by other user
+- A user can destroy one of his posts
+
 As part of our interview process, we'd like to invite you to tackle a technical challenge and share your solution with us. Are you ready? Let's get started!
 
 # Tasks
 
 Please invest some time in acquainting yourself with the codebase, including Models, Controllers, and the database structure.
 
+Duplicate the `.env.example` file as `.env` and edit the lines related to the database connection. You'll need to create a local MySQL database, you can call it "chipper". Then you can install dependencies and seed the database by running `composer install && php artisan migrate:fresh --seed`.
+
 Upload this code to a PRIVATE repository in GitHub. Invite the user [nicodevs](https://github.com/nicodevs/) to it.
 
 ![Image](https://i.imgur.com/wxemxjk.png)
 
-Then, proceed to address the following tasks one by one.
+Once you are ready, proceed to address the following tasks one by one.
 
 ## 1. Add the ability for users to favorite users
 
@@ -180,6 +184,6 @@ After implementing the feature, commit your work using the following commands:
 
 Congratulations! You completed the first part of this interview coding challenge. We'll now leave the API behind and enter the front-end realm.
 
-Please go to this repository and follow the instructions. Thank you and good luck!
+Please go to the front-end codebase and follow the instructions you'll find on the `README`. Thank you and good luck!
 
 
