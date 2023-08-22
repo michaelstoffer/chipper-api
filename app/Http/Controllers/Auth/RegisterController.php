@@ -50,7 +50,7 @@ class RegisterController extends Controller
         $data = $validator->validated();
 
         $user = User::create([
-            'name'        => $data['name'],
+            'name'              => $data['name'],
             'email'             => $data['email'],
             'password'          => Hash::make($data['password']),
             'email_verified_at' => config('app.must_verify_email') ? null : now(),

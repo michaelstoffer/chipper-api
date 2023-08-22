@@ -37,6 +37,23 @@ class AuthenticationTest extends TestCase
         $response->assertJsonStructure(['message', 'errors' => ['email']]);
     }
 
+    public function test_a_user_can_get_his_session(): void
+    {
+        $user = User::factory()->create();
+
+        $response = $this->actingAs($user)->json('GET', route('session'));
+
+        $response->assertOk();
+        $response->assertJsonStructure(['data' => ['name', 'email'], 'token']);
+    }
+
+    public function test_a_guest_can_not_get_his_session(): void
+    {
+        $response = $this->json('GET', route('session'));
+
+        $response->assertStatus(401);
+    }
+
     public function test_a_user_can_logout()
     {
         $user = User::factory()->create();
